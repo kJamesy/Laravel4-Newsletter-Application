@@ -19,13 +19,9 @@ Things you should do
 
 - Download and extract the contents into your development environment
 - Set up your mysql database with the following credentials (You can change them if you want, just ensure you configure ```app/config/database.php``` to match):
-			```
-			'database' => 'newsletterl4',
-			'username' => 'newsletterl4',
-			'password' => 'RncqKAJGLzw9z87n'
-			```
+```'database' => 'newsletterl4','username' => 'newsletterl4','password' => 'RncqKAJGLzw9z87n'```
 - It will be sending a lot of emails, so ensure you configure your ```app/config/mail.php``` accordingly
-- Run the migrations included in app/database/migrations or import the jl4-mysql-dump.sql included
+- Run the migrations included in ```app/database/migrations``` or import the ```jl4-mysql-dump.sql``` included
 - NB: The application needs two users - the first one (added when you run the migrations - by default, myself) is the super admin who receives emails when the other one (added when you setup the site in frontend) fills the 'help' form.
 - Once the above is done, go to your new home page from where you will follow instructions and voila!
 
