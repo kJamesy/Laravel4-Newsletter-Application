@@ -1,0 +1,88 @@
+div.tablesorterPager 
+{
+	padding: 10px 0 10px 0;
+	background-color: #D6D2C2;
+	text-align: center;
+}
+
+div.tablesorterPager span 
+{
+	padding: 0 5px 0 5px;
+}
+
+div.tablesorterPager input.prev 
+{
+	width: auto;
+	margin-right: 10px;
+}
+
+div.tablesorterPager input.next 
+{
+	width: auto;
+	margin-left: 10px;
+}
+
+div.tablesorterPager input 
+{
+	font-size: 8px;
+	width: 50px;
+	border: 1px solid #330000;
+	text-align: center;
+}
+
+table.tablesorter 
+{
+	margin:10px 0pt 15px;
+	font-size: 14px;
+	width: 100%;
+	text-align: left;
+}
+
+table.tablesorter thead tr th, table.tablesorter tfoot tr th 
+{
+	background-color: #CCC;
+	border-right: 1px solid #EEE;
+}
+
+table.tablesorter thead tr .header 
+{
+	background-image: url(bg.gif);
+	background-repeat: no-repeat;
+	background-position: center right;
+	cursor: pointer;
+	border-radius: 5px;
+	font-weight: normal;
+}
+
+table.tablesorter tbody tr.odd td 
+{
+	background-color:#F0F0F6;
+}
+
+table.tablesorter thead tr .headerSortUp 
+{
+	background-image: url(asc.gif);
+}
+
+table.tablesorter thead tr .headerSortDown 
+{
+	background-image: url(desc.gif);
+}
+
+table.tablesorter thead tr .headerSortDown, table.tablesorter thead tr .headerSortUp 
+{
+    background-color: #AAA;
+    border-radius: 5px;
+}
+
+table.tablesorter colgroup col 
+{
+	/*width: auto !important;*/
+}
+
+#pager.pager 
+{
+	position: relative !important;
+	top: 0 !important;
+	text-align: left;
+}

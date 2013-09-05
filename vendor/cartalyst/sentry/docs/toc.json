@@ -1,0 +1,11 @@
+{
+	"sections" : [
+		"overview",
+		"installation",
+		"permissions",
+		"authentication",
+		"users",
+		"groups",
+		"throttling"
+	]
+}

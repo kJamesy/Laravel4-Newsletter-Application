@@ -1,0 +1,211 @@
+::-moz-selection 
+{
+    background: #b3d4fc;
+    text-shadow: none;
+}
+
+::selection 
+{
+    background: #b3d4fc;
+    text-shadow: none;
+}
+
+.pagericons
+{
+	cursor: pointer;
+	color: #FFFFFF;
+	background-color: #5BC0DE;
+    padding: 8px;
+    vertical-align: middle;
+	border-radius: 3px;
+}
+
+#pager.pager .form-inline input, #pager.pager .form-inline select
+{
+	width: 180px;
+}
+
+#pager.pager .form-inline select
+{
+	float: right;
+}
+
+.subs-options
+{
+	margin-bottom: 20px;
+}
+
+.subs-options .dropdown-menu > li > a:hover, .subs-options .dropdown-menu > li > a:focus
+{
+	background: #5BC0DE;
+}
+
+.form-control.update-sub option
+{
+	cursor: pointer;
+}
+
+form.import-subs-form input#csvfile
+{
+	display: none;
+}
+
+.panel-message .progress
+{
+	margin-bottom: 0;
+}
+
+#select-subs-email
+{
+	min-height: 250px;
+	max-height: 500px;
+}
+
+.form-control#select-add-to-list, .form-control#select-remove-from-list
+{
+    min-height: 200px;
+}
+
+.tab-content 
+{
+    -moz-border-bottom-colors: none;
+    -moz-border-left-colors: none;
+    -moz-border-right-colors: none;
+    -moz-border-top-colors: none;
+    background: none repeat scroll 0 0 white;
+    border-color: -moz-use-text-color #DDDDDD #DDDDDD;
+    border-image: none;
+    border-right: 1px solid #DDDDDD;
+    border-style: none solid solid;
+    border-width: medium 1px 1px;
+    padding: 20px;
+}
+
+
+.tab-pane.active 
+{
+    overflow: hidden;
+}
+
+.select2-container-multi .select2-choices
+{
+    width: inherit;
+    margin-left: -13px !important;
+    margin-top: -7px !important;
+    padding-bottom: 5px !important;
+}
+
+.select2-container-multi .select2-choices .select2-search-choice
+{
+    line-height: inherit !important;
+    font-size: 10px;
+    color: #3A87AD !important;
+    font-weight: bold;
+}
+
+.form-control.select-fix
+{
+    min-height: 34px;
+    height: auto;
+    padding-bottom: 0;
+    border-bottom: none;
+}
+
+
+.emails-page .checkbox input[type="checkbox"], .emails-page .checkbox-inline input[type="checkbox"]
+{
+    margin-top: -6px;
+}
+
+.row.newsletter.dashboard-stats .row
+{
+    margin-bottom: 30px;
+}
+
+.dashboard-stats h4
+{
+    text-align: center;
+}
+
+.panel-pie
+{
+    position: relative;
+    background: #fff;
+    width: auto;
+    text-align: center;
+    @include border-radius(4px);
+    box-shadow: 4px 4px 5px rgba(0, 0, 0, 0.5);
+    overflow: hidden;
+}
+
+.chart
+{
+    display: inline-block;
+    width: 50%;
+    margin: 20px auto;
+    float: left;
+}
+
+.one-col
+{
+    width: 100%;
+}
+
+.three-cols
+{
+    width: 33.33%;
+}
+
+.five-cols
+{
+    width: 20%;
+}
+
+.easyPieChart 
+{
+    position: relative;
+    text-align: center;
+    canvas 
+    {
+        position: absolute;
+        top: 0;
+        left: 0;
+    }
+}
+
+.percentage, .label 
+{
+    margin-bottom: 0.5em;
+    text-align: center;
+    font-weight: 100;
+}
+
+.percentage
+{
+    font-size: 17px;
+    margin: 0 auto 15px;
+}
+
+sup
+{
+    top: -0.2em;
+    margin-left: 1px;
+}
+
+.ctrl
+{
+    position: absolute;
+    right: 10px;
+    top: 5px;
+    color: #c4cdcc;
+    word-spacing: 5px;
+    span
+    {   
+        cursor: pointer;
+        @include transition(color .5s ease-in-out);
+        &:hover
+        {
+            color: #000;
+        }
+    }
+}
