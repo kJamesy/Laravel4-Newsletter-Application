@@ -22,7 +22,7 @@ Things you should do [Edited]
 - Copy the ```composer.json``` file from step 3 and overwrite that in step 1 with it. 
 - Run ```composer update```
 - Copy the entire ```app/``` directory from step 3 and overwrite that in step 1 with it
-- Add ```,"app/libraries/csvImporter.php", "app/libraries/Browser.php"``` to ```autoload``` in ```composer.json``` file
+- Add ```,"app/libraries/csvImporter.php", "app/libraries/Browser.php"``` to ```autoload``` in ```composer.json``` file after ```"app/tests/TestCase.php"```
 - Run ```composer dump-autoload```
 - Set up your mysql database with the following credentials (You can change them if you want, just ensure you configure ```app/config/database.php``` to match):
 ```'database' => 'newsletterl4','username' => 'newsletterl4','password' => 'RncqKAJGLzw9z87n'```
