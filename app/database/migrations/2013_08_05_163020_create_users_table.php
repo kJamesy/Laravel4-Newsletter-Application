@@ -19,7 +19,6 @@ class CreateUsersTable extends Migration {
 			$table->string('reset_password_code')->nullable();
 			$table->string('first_name')->nullable();
 			$table->string('last_name')->nullable();
-			$table->string('role');
 			$table->timestamps();
 
 			$table->engine = 'InnoDB';
