@@ -17,11 +17,11 @@ Things you can do with it
 Things you should do [Edited]
 --------------
 - Download a fresh copy of [Laravel 4.0](https://github.com/laravel/laravel/archive/master.zip) into your dev environment
-- Use ```composer install``` to install its dependencies (see Laravel website for full guide)
+- Use ```composer install``` to install its dependencies (see [Laravel website](http://laravel.com/docs/installation) for full guide)
 - Download and extract the contents of Jl4 Newsletter Application into a separate directory
 - Copy the ```composer.json``` file from step 3 and overwrite that in step 1 with it. 
 - Run ```composer update```
-- Copy the entire ```app``` directory from step 3 and overwrite that in step 1 with it
+- Copy the entire ```app/``` directory from step 3 and overwrite that in step 1 with it
 - Add ```,"app/libraries/csvImporter.php", "app/libraries/Browser.php"``` to ```autoload``` in ```composer.json``` file
 - Run ```composer dump-autoload```
 - Set up your mysql database with the following credentials (You can change them if you want, just ensure you configure ```app/config/database.php``` to match):
