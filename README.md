@@ -14,10 +14,16 @@ Things you can do with it
 - View email readers' statistics - reads, browsers, platforms etc. 
 - It also automatically adds an 'unsubscribe' link to all emails 
 
-Things you should do
+Things you should do [Edited]
 --------------
-
-- Download and extract the contents into your development environment
+- Download a fresh copy of [Laravel 4.0](https://github.com/laravel/laravel/archive/master.zip) into your dev environment
+- Use ```composer install``` to install its dependencies (see Laravel website for full guide)
+- Download and extract the contents of Jl4 Newsletter Application into a separate directory
+- Copy the ```composer.json``` file from step 3 and overwrite that in step 1 with it. 
+- Run ```composer update```
+- Copy the entire ```app``` directory from step 3 and overwrite that in step 1 with it
+- Add ```,"app/libraries/csvImporter.php", "app/libraries/Browser.php"``` to ```autoload``` in ```composer.json``` file
+- Run ```composer dump-autoload```
 - Set up your mysql database with the following credentials (You can change them if you want, just ensure you configure ```app/config/database.php``` to match):
 ```'database' => 'newsletterl4','username' => 'newsletterl4','password' => 'RncqKAJGLzw9z87n'```
 - It will be sending a lot of emails, so ensure you configure your ```app/config/mail.php``` accordingly
