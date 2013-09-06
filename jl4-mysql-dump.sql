@@ -3,18 +3,12 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost
--- Generation Time: Sep 04, 2013 at 12:29 PM
+-- Generation Time: Sep 06, 2013 at 03:09 PM
 -- Server version: 5.5.24-log
 -- PHP Version: 5.4.3
 
 SET SQL_MODE="NO_AUTO_VALUE_ON_ZERO";
 SET time_zone = "+00:00";
-
-
-/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
-/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
-/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
-/*!40101 SET NAMES utf8 */;
 
 --
 -- Database: `newsletterl4`
@@ -206,7 +200,6 @@ CREATE TABLE IF NOT EXISTS `users` (
   `reset_password_code` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
   `first_name` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
   `last_name` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
-  `role` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
   `created_at` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00',
   `updated_at` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00',
   PRIMARY KEY (`id`),
@@ -217,8 +210,8 @@ CREATE TABLE IF NOT EXISTS `users` (
 -- Dumping data for table `users`
 --
 
-INSERT INTO `users` (`id`, `email`, `password`, `permissions`, `activated`, `activation_code`, `activated_at`, `last_login`, `persist_code`, `reset_password_code`, `first_name`, `last_name`, `role`, `created_at`, `updated_at`) VALUES
-(1, 'james@acw.uk.com', '$2y$08$91qt3tkwnCwMtkx8b3AafeIqck30RtPAyRf5PdjQoU5YfjSzDiYda', NULL, 1, NULL, '2013-09-04 12:29:05', NULL, NULL, NULL, 'k', 'Jamesy', '', '2013-09-04 12:29:05', '2013-09-04 12:29:05');
+INSERT INTO `users` (`id`, `email`, `password`, `permissions`, `activated`, `activation_code`, `activated_at`, `last_login`, `persist_code`, `reset_password_code`, `first_name`, `last_name`, `created_at`, `updated_at`) VALUES
+(1, 'james@acw.uk.com', '$2y$08$aw8Iiw8hPilOuQGi1l0H9.dUNkvJoft6N4RizNopehAgALL8gyFU6', NULL, 1, NULL, '2013-09-06 15:09:10', NULL, NULL, NULL, 'k', 'Jamesy', '2013-09-06 15:09:10', '2013-09-06 15:09:10');
 
 -- --------------------------------------------------------
 
@@ -249,7 +242,3 @@ ALTER TABLE `list_subscriber`
 ALTER TABLE `trackers`
   ADD CONSTRAINT `trackers_email_id_foreign` FOREIGN KEY (`email_id`) REFERENCES `emails` (`id`) ON DELETE CASCADE,
   ADD CONSTRAINT `trackers_subscriber_id_foreign` FOREIGN KEY (`subscriber_id`) REFERENCES `subscribers` (`id`) ON DELETE CASCADE;
-
-/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
-/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
-/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
