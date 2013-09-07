@@ -13,12 +13,12 @@ class CreateTrackersTable extends Migration {
 			$table->increments('id');
 			$table->integer('subscriber_id')->unsigned();
 			$table->integer('email_id')->unsigned();
-			$table->string('IP_address', 32);
-			$table->string('browser', 64);
-			$table->string('platform', 64);
-			$table->boolean('bounced');
-			$table->boolean('unsubscribed');
-			$table->boolean('read');
+			$table->string('IP_address', 32)->nullable();
+			$table->string('browser', 64)->nullable();
+			$table->string('platform', 64)->nullable();
+			$table->boolean('bounced')->nullable();
+			$table->boolean('unsubscribed')->nullable();
+			$table->boolean('read')->nullable();
 			$table->timestamp('read_at');
 			$table->timestamps();
 
