@@ -12,7 +12,8 @@ Things you can do with it
 - Send emails to individual subscribers or entire lists
 - Track emails 
 - View email readers' statistics - reads, browsers, platforms etc. 
-- It also automatically adds an 'unsubscribe' link to all emails 
+- It also automatically adds an 'unsubscribe' link to all emails
+- *Please note that the dashboard  (stats page) is cached every 30 minutes. So you won't see a change immediately.*
 
 Things you should do [Edited]
 --------------
