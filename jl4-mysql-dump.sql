@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost
--- Generation Time: Sep 06, 2013 at 03:09 PM
+-- Generation Time: Sep 07, 2013 at 03:42 PM
 -- Server version: 5.5.24-log
 -- PHP Version: 5.4.3
 
@@ -167,12 +167,12 @@ CREATE TABLE IF NOT EXISTS `trackers` (
   `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `subscriber_id` int(10) unsigned NOT NULL,
   `email_id` int(10) unsigned NOT NULL,
-  `IP_address` varchar(32) COLLATE utf8_unicode_ci NOT NULL,
-  `browser` varchar(64) COLLATE utf8_unicode_ci NOT NULL,
-  `platform` varchar(64) COLLATE utf8_unicode_ci NOT NULL,
-  `bounced` tinyint(1) NOT NULL,
-  `unsubscribed` tinyint(1) NOT NULL,
-  `read` tinyint(1) NOT NULL,
+  `IP_address` varchar(32) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `browser` varchar(64) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `platform` varchar(64) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `bounced` tinyint(1) NOT NULL DEFAULT '0',
+  `unsubscribed` tinyint(1) NOT NULL DEFAULT '0',
+  `read` tinyint(1) NOT NULL DEFAULT '0',
   `read_at` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00',
   `created_at` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00',
   `updated_at` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00',
@@ -211,7 +211,7 @@ CREATE TABLE IF NOT EXISTS `users` (
 --
 
 INSERT INTO `users` (`id`, `email`, `password`, `permissions`, `activated`, `activation_code`, `activated_at`, `last_login`, `persist_code`, `reset_password_code`, `first_name`, `last_name`, `created_at`, `updated_at`) VALUES
-(1, 'james@acw.uk.com', '$2y$08$aw8Iiw8hPilOuQGi1l0H9.dUNkvJoft6N4RizNopehAgALL8gyFU6', NULL, 1, NULL, '2013-09-06 15:09:10', NULL, NULL, NULL, 'k', 'Jamesy', '2013-09-06 15:09:10', '2013-09-06 15:09:10');
+(1, 'james@acw.uk.com', '$2y$08$RMmvIleqcrnUKtQRfV3MZOyI59HjGfbYEfGXzg2FZ3K.CIDXVsJkW', NULL, 1, NULL, '2013-09-07 15:39:55', NULL, NULL, NULL, 'k', 'Jamesy', '2013-09-07 15:39:55', '2013-09-07 15:39:55');
 
 -- --------------------------------------------------------
 
