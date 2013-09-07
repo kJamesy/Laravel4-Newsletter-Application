@@ -16,9 +16,9 @@ class CreateTrackersTable extends Migration {
 			$table->string('IP_address', 32)->nullable();
 			$table->string('browser', 64)->nullable();
 			$table->string('platform', 64)->nullable();
-			$table->boolean('bounced')->nullable();
-			$table->boolean('unsubscribed')->nullable();
-			$table->boolean('read')->nullable();
+			$table->boolean('bounced')->default(0);
+			$table->boolean('unsubscribed')->default(0);
+			$table->boolean('read')->default(0);
 			$table->timestamp('read_at');
 			$table->timestamps();
 
