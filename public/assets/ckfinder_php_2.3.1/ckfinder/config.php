@@ -60,7 +60,8 @@ Examples:
 
 ATTENTION: The trailing slash is required.
 */
-$baseUrl = 'http://newsletter.acw-server1.co.uk/Newsletter1/';
+	$protocol = strpos(strtolower($_SERVER['SERVER_PROTOCOL']),'https') === FALSE ? 'http' : 'https';
+$baseUrl = $protocol . '://' . $_SERVER['SERVER_NAME'] . '/files/';
 
 /*
 $baseDir : the path to the local directory (in the server) which points to the
