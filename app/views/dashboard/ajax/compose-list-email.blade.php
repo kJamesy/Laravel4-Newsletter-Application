@@ -32,9 +32,9 @@
         </div>
     </div>
     <div class="form-group">
-        <label for="ckeditor-1" class="col-lg-2 control-label">Email Body</label>
+        <label for="ckeditor-3" class="col-lg-2 control-label">Email Body</label>
         <div class="col-lg-10">
-            <textarea class="form-control" id="ckeditor-1" rows="3"></textarea>
+            <textarea class="form-control" id="ckeditor-3" rows="3"></textarea>
         </div>
     </div> 
     <div class="form-group">
@@ -44,11 +44,11 @@
     </div>                                                       
 </form> 
 <script>
-    var editor = CKEDITOR.replace('ckeditor-1', 
+    var editor = CKEDITOR.replace('ckeditor-3', 
         {
             // width: 600,
             // height: 450
         });
 
-    CKFinder.setupCKEditor(editor, 'assets/ckfinder_php_2.3.1/ckfinder/');
+    CKFinder.setupCKEditor(editor, '<?php echo asset("assets/ckfinder_php_2.3.1/ckfinder/"); ?>');
 </script>
