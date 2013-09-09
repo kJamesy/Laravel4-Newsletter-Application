@@ -59,5 +59,5 @@
             // height: 450
         });
 
-    CKFinder.setupCKEditor(editor, 'assets/ckfinder_php_2.3.1/ckfinder/');
+    CKFinder.setupCKEditor(editor, '<?php echo asset("assets/ckfinder_php_2.3.1/ckfinder"); ?>');
 </script>
