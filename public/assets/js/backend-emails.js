@@ -140,13 +140,20 @@ jQuery(document).ready(function($)
 
     });  
 
+    enabledisable(); 
+
     $(':checkbox.delete-checkbox').change(function()
+    {
+        enabledisable();
+    });
+
+    function enabledisable()
     {
 		if ($('input[name="checkbox1[]"]:checked').length > 0)
 			$(".delete-btn").removeClass('disabled');
 	    else
-	    	$(".delete-btn").addClass('disabled');
-	});
+	    	$(".delete-btn").addClass('disabled');             
+    }	
 
 	$('.delete-btn').click(function()
 	{
