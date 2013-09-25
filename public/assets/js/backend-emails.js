@@ -140,20 +140,13 @@ jQuery(document).ready(function($)
 
     });  
 
-    enabledisable(); 
-
     $(':checkbox.delete-checkbox').change(function()
-    {
-        enabledisable();
-    });
-
-    function enabledisable()
     {
 		if ($('input[name="checkbox1[]"]:checked').length > 0)
 			$(".delete-btn").removeClass('disabled');
 	    else
-	    	$(".delete-btn").addClass('disabled');             
-    }	
+	    	$(".delete-btn").addClass('disabled');
+	});
 
 	$('.delete-btn').click(function()
 	{
@@ -222,20 +215,13 @@ jQuery(document).ready(function($)
 
     });  
 
-    enabledisable2();     
-
     $(':checkbox.destroy-checkbox').change(function()
-    {
-    	enabledisable2();
-	});
-
-    function enabledisable2()
     {
 		if ($('input[name="checkbox2[]"]:checked').length > 0)
 			$(".destroy-btn").removeClass('disabled');
 	    else
-	    	$(".destroy-btn").addClass('disabled');            
-    }		
+	    	$(".destroy-btn").addClass('disabled');
+	});
 
 	$('.destroy-btn').click(function()
 	{
