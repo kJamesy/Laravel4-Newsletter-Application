@@ -222,12 +222,12 @@ jQuery(document).ready(function($)
 
     });  
 
-    enabledisable2(); 
+    enabledisable2();     
 
-    $(':checkbox.delete-checkbox').change(function()
+    $(':checkbox.destroy-checkbox').change(function()
     {
-        enabledisable2();
-    });
+    	enabledisable2();
+	});
 
     function enabledisable2()
     {
@@ -235,12 +235,7 @@ jQuery(document).ready(function($)
 			$(".destroy-btn").removeClass('disabled');
 	    else
 	    	$(".destroy-btn").addClass('disabled');            
-    }	    
-
-    $(':checkbox.destroy-checkbox').change(function()
-    {
-    	enabledisable2();
-	});
+    }		
 
 	$('.destroy-btn').click(function()
 	{
