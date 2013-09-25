@@ -222,12 +222,24 @@ jQuery(document).ready(function($)
 
     });  
 
-    $(':checkbox.destroy-checkbox').change(function()
+    enabledisable2(); 
+
+    $(':checkbox.delete-checkbox').change(function()
+    {
+        enabledisable2();
+    });
+
+    function enabledisable2()
     {
 		if ($('input[name="checkbox2[]"]:checked').length > 0)
 			$(".destroy-btn").removeClass('disabled');
 	    else
-	    	$(".destroy-btn").addClass('disabled');
+	    	$(".destroy-btn").addClass('disabled');            
+    }	    
+
+    $(':checkbox.destroy-checkbox').change(function()
+    {
+    	enabledisable2();
 	});
 
 	$('.destroy-btn').click(function()
