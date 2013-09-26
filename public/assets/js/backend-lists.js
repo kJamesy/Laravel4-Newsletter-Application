@@ -407,7 +407,7 @@ jQuery(document).ready(function($)
 				var from_name = $.trim($('form.compose-email-form #from-name').val());
 				var from_email = $.trim($('form.compose-email-form #from-email').val());
 				var subject = $.trim($('form.compose-email-form #subject').val());	
-				var emailbody = $.trim(CKEDITOR.instances['ckeditor-1'].getData());				
+				var emailbody = $.trim(CKEDITOR.instances['ckeditor-3'].getData());				
 
 				$.post(action, {from_name: from_name, from_email: from_email, to: selected, subject: subject, emailbody: emailbody}, function(data)
 				{
