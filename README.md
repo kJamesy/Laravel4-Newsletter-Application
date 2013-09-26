@@ -2,7 +2,7 @@ Jl4 Newsletter Application
 ==============
 
 I give you a nifty little [Laravel 4](http://laravel.com) newsletter application. 
-Give it a shot!
+Give it a shot! [DEMO](http://newsletterjl4.jf32.com/)
 
 Things you can do with it
 --------------
@@ -15,7 +15,7 @@ Things you can do with it
 - It also automatically adds an 'unsubscribe' link to all emails
 - *Please note that the dashboard  (stats page) is cached every 30 minutes. So you won't see a change immediately.*
 
-Things you should do [Edited]
+Things you should do
 --------------
 - Download a fresh copy of [Laravel 4.0](https://github.com/laravel/laravel/archive/master.zip) into your dev environment
 - Use ```composer install``` to install its dependencies (see [Laravel website](http://laravel.com/docs/installation) for full guide)
