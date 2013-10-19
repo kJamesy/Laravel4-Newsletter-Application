@@ -10,7 +10,7 @@
 		</div>
 		<div>
 			<p>
-				To reset your Jl4 newsletter account password, please follow the link below:
+				To reset your Jl4 Newsletter account password, please follow the link below:
 			</p><p>
 				<a href='{{URL::to("password-reset/{$user->reset_password_code}") }}'>{{ URL::to("password-reset/{$user->reset_password_code}") }}</a>
 			</p>

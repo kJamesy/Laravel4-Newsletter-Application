@@ -65,7 +65,7 @@ Route::group(array('before' => 'checkAuth'), function()
 
 	Route::post('dashboard/subscribers/{id}', 'SubscriberController@update_subscriber');
 
-	Route::post('dashboard/subscribers/delete/{id}', 'SubscriberController@delete_subscriber');
+	Route::post('dashboard/subscribers/delete/{id}', 'SubscriberController@delete_subscribers');
 
 	Route::post('dashboard/subscribers/import/{num}', 'SubscriberController@import_csv');
 
@@ -132,6 +132,10 @@ Route::group(array('before' => 'checkAuth'), function()
 		$subscribers = Subscriber::where('active', '=', 1)->get();
 		return View::make('dashboard.ajax.compose-emails-email', array('user' => Sentry::getUser(), 'subscribers' => $subscribers));
 	});
+
+	Route::post('dashboard/emails/move-to-drafts/{num}', 'EmailController@move_to_drafts');
+
+	Route::post('dashboard/emails/drafts-destroy/{num}', 'EmailController@destroy_draft');
 
 	Route::post('dashboard/emails/send-email/{num}', 'EmailController@send_email');
 

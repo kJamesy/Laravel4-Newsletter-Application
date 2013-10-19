@@ -6,7 +6,10 @@ class ListController extends BaseController
 	public function index()
 	{
 		$user = Sentry::getUser();
-		$lists = Addressbook::with('subscribers')->orderBy('id', 'asc')->get();
+		$lists = Addressbook::with(array('subscribers' => function($query)
+								{
+									$query->orderBy('first_name', 'asc');
+								}))->orderBy('id', 'asc')->get();
 		$sitename = Setting::first()->pluck('sitename');
 
 		return View::make('dashboard.lists', array('user' => $user, 'lists' => $lists, 'sitename' => $sitename));		
@@ -41,7 +44,10 @@ class ListController extends BaseController
 
 	public function update_list($id)
 	{
-		$list = Addressbook::with('subscribers')->find($id);
+		$list = Addressbook::with(array('subscribers' => function($query)
+							{
+								$query->orderBy('first_name', 'asc');
+							}))->find($id);
 		$activebefore = $list->active;
 
 		if($list->subscribers)
@@ -139,12 +145,12 @@ class ListController extends BaseController
 				$subs_array[] = $list_subscriber->id;
 			}
 
-			$subscribers = Subscriber::whereNotIn('id', $subs_array)->get();
+			$subscribers = Subscriber::whereNotIn('id', $subs_array)->orderBy('first_name', 'asc')->get();
 		}
 
 		else
 		{
-			$subscribers = Subscriber::get();
+			$subscribers = Subscriber::orderBy('first_name', 'asc')->get();
 		}
 
 
@@ -201,7 +207,7 @@ class ListController extends BaseController
 
 	public function get_subscribers_to_remove($id)
 	{
-		$list = Addressbook::with('subscribers')->find($id);
+		$list = Addressbook::with(array('subscribers' => function($query){ $query->orderBy('first_name', 'asc'); }))->find($id);
 		return Response::json($list->subscribers);
 	}
 
@@ -243,7 +249,7 @@ class ListController extends BaseController
 
     public function export_list_csv($id)
     {
-        $list = Addressbook::with('subscribers')->find($id);
+        $list = Addressbook::with(array('subscribers' => function($query){ $query->orderBy('first_name', 'asc'); }))->find($id);
 
         $file_name = date('Y_m_d_H_i').'_'.$list->name.'_list'.'.csv';
 	    $file = fopen('exports/'.$file_name, 'w');
@@ -282,6 +288,7 @@ class ListController extends BaseController
 		    ->whereIn('list_subscriber.list_id', $lists)
 		    ->groupBy('list_subscriber.subscriber_id')
 		    ->where('subscribers.active', '=', 1)
+		    ->orderBy('subscribers.first_name', 'asc')
 		    ->get(array('subscribers.*'));
 
 		 return Response::json($subscribers);

@@ -9,7 +9,7 @@
             <ul class="nav nav-pills pull-right">
                 <li><a class="login-box" href="{{URL::to('login-form')}}">Admin</a></li>
             </ul>
-            <h3 class="text-muted">Jl4 Newsletter</h3>
+            <h1 class="no-margins"><a href="{{URL::to('/')}}">Jl4 Newsletter</a></h1>
         </div>
         <div class="row newsletter">
             <form class="form-horizontal password-reset-form" action="{{URL::to('password-reset-form')}}">
@@ -41,7 +41,8 @@
             </form>
         </div>
         <div class="footer">
-            <p>&copy;Jl4 <?php echo date('Y') ?></p>
+            <div style="border-bottom: 2px dotted #333; padding: 20px 0;"></div>
+            <div class="pull-left" style="padding-top:10px;"><a href="https://github.com/kJamesy/Laravel4-Newsletter-Application" target="_blank">Download on Github</a></div>
         </div>
     </div> <!-- /container --> 
 

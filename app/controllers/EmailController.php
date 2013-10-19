@@ -7,6 +7,7 @@ class EmailController extends BaseController
 	{
 		$user = Sentry::getUser();
 		$emails = Email::with('trackers.subscriber')->orderBy('id', 'desc')->where('deleted', '=', 0)->get();
+		$drafts = Draft::orderBy('id', 'desc')->get();
 		$trashes = Email::with('trackers.subscriber')->orderBy('id', 'desc')->where('deleted', '=', 1)->get();
 		$sitename = Setting::first()->pluck('sitename');
 
@@ -20,8 +21,45 @@ class EmailController extends BaseController
 		else
 			$subject_content = '';		
 
-		return View::make('dashboard.emails', array('user' => $user, 'emails' => $emails, 'trashes' => $trashes, 'content' => $content, 'subject_content' => $subject_content, 'sitename' => $sitename));		
+		return View::make('dashboard.emails', array('user' => $user, 'emails' => $emails, 'drafts' => $drafts, 'trashes' => $trashes, 'content' => $content, 'subject_content' => $subject_content, 'sitename' => $sitename));		
 	}	
+
+	public function move_to_drafts($dummy)
+	{
+		$rules = array(
+			'subject' => 'required|max:128',
+			'emailbody' => 'required'
+		);	
+
+	    $validator = Validator::make(Input::all(), $rules);
+
+	    if ($validator->fails())
+	    {
+	    	return Response::json(array('validation' => $validator->messages()->toArray()));
+	    }  
+
+	    else
+	    {
+	    	$draft = new Draft;
+	    	$draft->subject = Input::get('subject');
+	    	$draft->message = Input::get('emailbody');
+	    	$draft->save();
+
+	    	return Response::json(array('success' => 'Email successfully moved to drafts. You can access it by navigating to the drafts tab.'));	
+	  	}
+
+	} 
+
+
+	public function destroy_draft($dummy)
+	{
+		$selected = Input::get('selected');
+
+		$draft = Draft::whereIn('id', $selected)->delete();
+
+		return Response::json(array('success' => 'The selected drafts have been successfully destroyed.'));
+	}
+
 
 	public function send_email($dummy)
 	{
@@ -137,7 +175,7 @@ class EmailController extends BaseController
 		$email->deleted = 0;
 		$email->save();
 
-		return Redirect::to('dashboard/emails');
+		return Redirect::to('dashboard/emails?tab=sent');
 	}
 
 

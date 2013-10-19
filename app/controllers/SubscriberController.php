@@ -5,7 +5,7 @@ class SubscriberController extends BaseController
 	public function subscribers()
 	{
 		$user = Sentry::getUser();
-		$subscribers = Subscriber::get();
+		$subscribers = Subscriber::orderBy('first_name', 'asc')->get();
 		$sitename = Setting::first()->pluck('sitename');
 
 		return View::make('dashboard.subscribers', array('user' => $user, 'subscribers' => $subscribers, 'sitename' => $sitename));
@@ -87,14 +87,21 @@ class SubscriberController extends BaseController
 
 	}
 
-	public function delete_subscriber($id)
+	public function delete_subscribers($dummy)
 	{
-		$subscriber = Subscriber::find($id);
+		$selected = Input::get('selected');
+		$num_del = 0;
 
-		if ($subscriber->delete())
-			return Response::json(array('success' => 'The selected subscriber has been successfully deleted'));
-		else
-			return Response::json(array('error' => 'An error occured. Kindly try again or contact admin.'));
+		foreach ($selected as $key => $id) 
+		{
+			$subscriber = Subscriber::find($id);	
+
+			if ($subscriber->delete())
+				$num_del += 1;	
+		}
+
+		$message = $num_del . ' subscribers have been successfully deleted.';
+		return Response::json(array('success' => $message));
 	}
 
 	public function import_csv($num)
@@ -344,7 +351,6 @@ class SubscriberController extends BaseController
 
 	public function tracker($id)
 	{
-		//ipinfodb  cf920974792f73a9d4391042d42a9dbfe3a0a7b9fa8e6665c57d099c8d8fb72f
 		$browser = new Browser;
 		$userbrowser = $browser->getBrowser() . ' ' . $browser->getVersion();
 		$userplatform = $browser->getPlatform();

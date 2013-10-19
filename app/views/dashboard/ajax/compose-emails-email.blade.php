@@ -40,10 +40,11 @@
     </div> 
     <div class="form-group">
         <div class="col-lg-10 col-lg-offset-2">
-            <button type="submit" class="btn btn-primary btn-lg" id="process-email" >SEND</button>
+            <a href="{{URL::to('dashboard/emails/move-to-drafts/1')}}" class="btn btn-default btn-lg pull-left" id="move-draft">Move to Drafts</a>
+            <button type="submit" class="btn btn-primary btn-lg pull-right" id="process-email" >Send</button>
         </div>
     </div>    
-    <div class="panel panel-info panel-email-sub col-lg-10 col-lg-offset-2">
+    <div class="panel panel-info panel-email-sub col-lg-10 col-lg-offset-2" style="margin-top: 30px;">
         <div class="panel-heading">
             <h3 class="panel-title">Compose an email</h3>
         </div> 

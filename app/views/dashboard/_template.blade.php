@@ -18,6 +18,11 @@
         @yield('extrajs')        
     </head>
     <body>
-        @yield('page') 
+        <div class="container-narrow">
+            @yield('page') 
+            <div class="footer">
+                <div class="pull-left"><a href="https://github.com/kJamesy/Laravel4-Newsletter-Application" target="_blank">Github</a></div>
+            </div>
+        </div> <!-- /container -->  
      </body>
 </html>

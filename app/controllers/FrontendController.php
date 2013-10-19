@@ -5,7 +5,7 @@ class FrontendController extends BaseController
 
 	public function index()
 	{
-		if (Sentry::check()) //More checks for the type of user
+		if (Sentry::check()) 
 		{
 			$user = Sentry::getUser();
 			return Redirect::to('dashboard');

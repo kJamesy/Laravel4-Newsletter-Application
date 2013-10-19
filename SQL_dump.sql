@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost
--- Generation Time: Sep 07, 2013 at 03:42 PM
+-- Generation Time: Oct 18, 2013 at 03:58 PM
 -- Server version: 5.5.24-log
 -- PHP Version: 5.4.3
 
@@ -11,8 +11,23 @@ SET SQL_MODE="NO_AUTO_VALUE_ON_ZERO";
 SET time_zone = "+00:00";
 
 --
--- Database: `newsletterl4`
+-- Database: `newsletterl4-1.1`
 --
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `drafts`
+--
+
+CREATE TABLE IF NOT EXISTS `drafts` (
+  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `subject` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
+  `message` text COLLATE utf8_unicode_ci NOT NULL,
+  `created_at` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00',
+  `updated_at` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00',
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=1 ;
 
 -- --------------------------------------------------------
 
@@ -104,7 +119,8 @@ INSERT INTO `migrations` (`migration`, `batch`) VALUES
 ('2013_08_05_163426_create_emails_table', 1),
 ('2013_08_05_163517_create_list_subscriber_table', 1),
 ('2013_08_05_163540_create_trackers_table', 1),
-('2013_09_02_180149_create_settings_table', 1);
+('2013_09_02_180149_create_settings_table', 1),
+('2013_09_26_161836_create_drafts_table', 1);
 
 -- --------------------------------------------------------
 
@@ -211,7 +227,7 @@ CREATE TABLE IF NOT EXISTS `users` (
 --
 
 INSERT INTO `users` (`id`, `email`, `password`, `permissions`, `activated`, `activation_code`, `activated_at`, `last_login`, `persist_code`, `reset_password_code`, `first_name`, `last_name`, `created_at`, `updated_at`) VALUES
-(1, 'james@acw.uk.com', '$2y$08$RMmvIleqcrnUKtQRfV3MZOyI59HjGfbYEfGXzg2FZ3K.CIDXVsJkW', NULL, 1, NULL, '2013-09-07 15:39:55', NULL, NULL, NULL, 'k', 'Jamesy', '2013-09-07 15:39:55', '2013-09-07 15:39:55');
+(1, 'james@acw.uk.com', '$2y$08$QMSq.nf1XRD/O6.KqVszF.rWY4MdLu8QFiee.04nJhuw1LZgwYJc.', NULL, 1, NULL, '2013-10-18 15:58:13', NULL, NULL, NULL, 'k', 'Jamesy', '2013-10-18 15:58:13', '2013-10-18 15:58:13');
 
 -- --------------------------------------------------------
 

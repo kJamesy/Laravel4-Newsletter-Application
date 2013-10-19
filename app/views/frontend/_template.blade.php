@@ -16,8 +16,6 @@
         {{ HTML::script('assets/js/frontend.js') }}        
      </head>
      <body>
-
-        @yield('page') 
-         
+            @yield('page')        
      </body>
 </html>

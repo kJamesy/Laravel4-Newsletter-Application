@@ -14,13 +14,17 @@ jQuery(document).ready(function($)
 
 	function processSubForm(parent, action, firstname, lastname, email, active, redirect)
 	{
+		var thepanel =  parent + ' .panel-new-sub';
+
         $.post(action, {first_name: firstname, last_name: lastname, email: email, active: active}, function(data)
         {
+
             if (data['success'] !=undefined)
             {
-           		$('.panel-new-sub').removeClass('panel-info').removeClass('panel-danger').addClass('panel-success');
-            	$('.panel-new-sub .panel-title').text('Success!');
-            	$('.panel-new-sub .panel-message').text(data['success']);
+            	
+           		$(thepanel).removeClass('panel-info').removeClass('panel-danger').addClass('panel-success');
+            	$(thepanel + ' .panel-title').text('Success!');
+            	$(thepanel + ' .panel-message').text(data['success']);
 
             	if (redirect == 'yes')
             	{
@@ -52,7 +56,7 @@ jQuery(document).ready(function($)
             }
 
             if (errors.length > 0)
-            	processErrors(parent+' .panel-new-sub', errors);
+            	processErrors(thepanel, errors);
 
             customFunction();
 
@@ -69,45 +73,60 @@ jQuery(document).ready(function($)
 	$("#select-sub-update").change(function() 
 	{
 		var id = $(this).val();
-		var url = $(this).attr('rel')+'/'+id;
-		var $fname = $('.update-sub-form input#update-first-name');
-		var $lname = $('.update-sub-form input#update-last-name');
-		var $email = $('.update-sub-form input#update-email');
-		var $yes = $('.update-sub-form #yes');
-		var $no = $('.update-sub-form #no');
-		var $savebtn = $('#save-update-sub');
 
-		$yes.removeAttr('disabled');
-		$no.removeAttr('disabled');
-		$savebtn.removeAttr('disabled');
+		if (id > 0)
+		{
+			var url = $(this).attr('rel')+'/'+id;
+			var $fname = $('.update-sub-form input#update-first-name');
+			var $lname = $('.update-sub-form input#update-last-name');
+			var $email = $('.update-sub-form input#update-email');
+			var $yes = $('.update-sub-form #yes');
+			var $no = $('.update-sub-form #no');
+			var $savebtn = $('#save-update-sub');
 
-        $.post(url, function(data)
-        {
-        	$fname.removeAttr('disabled').val(data['first_name']);
-        	$lname.removeAttr('disabled').val(data['last_name']);
-        	$email.removeAttr('disabled').val(data['email']);
-        	if (data['active'] == 1)
-        		$yes.prop('checked', true);
-        	else
-        		$no.prop('checked', true);
+			$yes.removeAttr('disabled');
+			$no.removeAttr('disabled');
+			$savebtn.removeAttr('disabled');
 
-        	$savebtn.attr('rel', data['id']);
+	        $.post(url, function(data)
+	        {
+	        	$fname.removeAttr('disabled').val(data['first_name']);
+	        	$lname.removeAttr('disabled').val(data['last_name']);
+	        	$email.removeAttr('disabled').val(data['email']);
+	        	if (data['active'] == 1)
+	        		$yes.prop('checked', true);
+	        	else
+	        		$no.prop('checked', true);
 
-			$savebtn.click(function(e)
+	        	$savebtn.attr('rel', data['id']);
+
+				$savebtn.click(function(e)
+				{
+					e.preventDefault(); 
+					$savebtn.button('loading');
+
+					var url = $('.update-sub-form').attr('action')+'/'+$(this).attr('rel');
+					var first_name = $.trim($fname.val());
+					var last_name = $.trim($lname.val());
+					var email = $.trim($email.val());
+					var active = $(".update-sub-form :radio:checked").val();
+					var redirect = 'no';
+					processSubForm('#update-sub', url, first_name, last_name, email, active, redirect);
+				});
+
+	        }, 'json'); 
+		}
+
+		else
+		{
+			$('#save-update-sub').attr('disabled', 'disabled');
+			$('form.update-sub-form')[0].reset();
+			$('form.update-sub-form input').each(function()
 			{
-				e.preventDefault(); 
-				$savebtn.button('loading');
+				$(this).attr('disabled', 'disabled');
+			});			
+		}
 
-				var url = $('.update-sub-form').attr('action')+'/'+$(this).attr('rel');
-				var first_name = $.trim($fname.val());
-				var last_name = $.trim($lname.val());
-				var email = $.trim($email.val());
-				var active = $(".update-sub-form :radio:checked").val();
-				var redirect = 'no';
-				processSubForm('#update-sub', url, first_name, last_name, email, active, redirect);
-			});
-
-        }, 'json'); 
 	});
 
 	$('#update-sub').on('hide.bs.modal', function () 
@@ -129,20 +148,39 @@ jQuery(document).ready(function($)
 		}
 	}
 
-	$("#select-sub-delete").change(function()
-	{
-		$('#delete-sub-btn').removeAttr('disabled');
-	});
+	if ($('#select-subs-delete').val() != null)
+		$('.num-selected-del').text($('#select-subs-delete').val().length);
 
-	$('#delete-sub-btn').click(function(e)
+	if ($('.num-selected-del').text() > 0)
+		$('#delete-subs-btn').removeAttr('disabled');
+	
+	$('#select-subs-delete').change(function()
+	{
+		var $this = $(this);
+		var $numsel = $('.num-selected-del');
+		var $deletebtn = $('#delete-subs-btn');
+
+		if ($this.val() != null)
+			$numsel.text($this.val().length);
+		else
+			$numsel.text('0');
+
+		if ($numsel.text() > 0)
+			$deletebtn.removeAttr('disabled');
+		else
+			$deletebtn.attr('disabled', 'disabled');
+	});	
+
+
+	$('#delete-subs-btn').click(function(e)
 	{
 		e.preventDefault(); 
 		$(this).attr('disabled', 'disabled');
 
-		var id = $("#select-sub-delete").val();
-		var action = $('.delete-sub-form').attr('action')+'/'+id;
+		var selected = $("#select-subs-delete").val();
+		var action = $('.delete-subs-form').attr('action')+'/1';
 
-        $.post(action, function(data)
+        $.post(action, {selected: selected}, function(data)
         {
             if (data['success'] !=undefined)
             {
@@ -169,9 +207,9 @@ jQuery(document).ready(function($)
 
 	$('#delete-sub').on('hide.bs.modal', function () 
 	{
-		$('form.delete-sub-form')[0].reset();
+		$('form.delete-subs-form')[0].reset();
 
-		$('#delete-sub-btn').attr('disabled', 'disabled');
+		$('#delete-subs-btn').attr('disabled', 'disabled');
 	});	
 
 	$('#export-subs').click(function(e)
@@ -290,8 +328,6 @@ jQuery(document).ready(function($)
 		    {
 
 		    	$('#email-subs').modal('hide');
-
-		    	$('.container-narrow h1').text('Email Selected Subscribers');
 
 		    	var action = $('form.email-subs-form').attr('action');
 

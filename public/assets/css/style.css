@@ -55,7 +55,7 @@ form.import-subs-form input#csvfile
 	margin-bottom: 0;
 }
 
-#select-subs-email
+#select-subs-email, #select-subs-delete
 {
 	min-height: 250px;
 	max-height: 500px;
@@ -75,7 +75,7 @@ form.import-subs-form input#csvfile
     background: none repeat scroll 0 0 white;
     border-color: -moz-use-text-color #DDDDDD #DDDDDD;
     border-image: none;
-    border-right: 1px solid #DDDDDD;
+    border: 1px solid #DDDDDD;
     border-style: none solid solid;
     border-width: medium 1px 1px;
     padding: 20px;
@@ -208,4 +208,20 @@ sup
             color: #000;
         }
     }
+}
+
+.footer
+{
+    overflow: hidden;
+}
+
+.jumbotron
+{
+    display: none;
+}
+
+.header
+{
+    margin-bottom: 0;
+    border-bottom: none;
 }

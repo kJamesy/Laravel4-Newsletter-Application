@@ -5,12 +5,9 @@ class MainController extends BaseController
 
 	public function index()
 	{
-		$minutes = 30;
+		$minutes = 10; //30
 
-		$user = Cache::remember('user', $minutes, function()
-		{
-		    return Sentry::getUser();
-		});				
+		$user = Sentry::getUser();			
 
 		$sitename = Cache::remember('sitename', $minutes, function()
 		{

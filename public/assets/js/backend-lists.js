@@ -1,5 +1,11 @@
 jQuery(document).ready(function($) 
 {
+	$('.form-horizontal.new-list-form').submit(function(e)
+	{
+		e.preventDefault();
+	});
+
+
 	$('#save-list').click(function(e)
 	{
 		e.preventDefault();
@@ -18,6 +24,11 @@ jQuery(document).ready(function($)
            		$(parent).removeClass('panel-info').removeClass('panel-danger').addClass('panel-success');
             	$(parent+' .panel-title').text('Success!');
             	$(parent+' .panel-message').text(data['success']);
+
+            	setTimeout(function()
+            	{
+            		reloadPage();
+            	}, 1000);
             }   
 
             var errors = '';
@@ -46,6 +57,11 @@ jQuery(document).ready(function($)
     	$(panel+' .panel-title').text('Please correct the errors below');
     	$(panel+' .panel-message').html(message);		
 	}
+
+	$('.form-horizontal.update-list-form').submit(function(e)
+	{
+		e.preventDefault();
+	});	
 
 	$("#select-list-update").change(function() 
 	{

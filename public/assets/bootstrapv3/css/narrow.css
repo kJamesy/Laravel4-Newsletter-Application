@@ -2,13 +2,14 @@
 body {
     padding-bottom: 20px;
     padding-top: 20px;
+    background: #EBEBEB;
 }
 .header, .newsletter, .footer {
     padding-left: 15px;
     padding-right: 15px;
 }
 .header {
-    border-bottom: 1px solid #E5E5E5;
+    
 }
 .header h3 {
     line-height: 40px;
@@ -17,12 +18,13 @@ body {
     padding-bottom: 19px;
 }
 .footer {
-    border-top: 1px solid #E5E5E5;
+    border-top: 2px dotted #333;
     color: #777777;
     padding-top: 19px;
 }
 .container-narrow {
-    margin: 0 auto;
+    margin: 0 20px 40px;
+    overflow: hidden;
     max-width: 1280px;
 }
 .container-narrow > hr {
@@ -32,7 +34,7 @@ body {
 .newsletter {
     margin: 0;
     padding: 25px !important;
-    border-bottom: 1px solid #E5E5E5;
+    border-top: 2px dotted #333;
 }
 .newsletter p + h4 {
     margin-top: 28px;
@@ -42,7 +44,7 @@ body {
     padding-right: 0;
 }
 .header, .newsletter {
-    margin-bottom: 30px;
+    /*margin-bottom: 30px;*/
 }
 .jumbotron {
     border-bottom: 0 none;
@@ -50,13 +52,36 @@ body {
 
 .row.newsletter
 {
-    background: #EEE;
+    /*background: #EEE;*/
     /*color: #FFF;*/
-    border-radius: 5px;
+    /*border-radius: 5px;*/
 }
 
 .form-horizontal.login
 {
     width: 75%;
     margin: 0 auto;
+}
+
+h1 a:hover
+{
+    text-decoration: none;
+}
+
+.carousel-caption
+{
+    font-size: 20px;
+    font-weight: bold;
+}
+
+.carousel-indicators li 
+{
+    border-radius: 0;
+    height: 12px;
+    width: 12px;
+}
+
+.carousel-indicators li.active 
+{
+    margin: 1px;/
 }
