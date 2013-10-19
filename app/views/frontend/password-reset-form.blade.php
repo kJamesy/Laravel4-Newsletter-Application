@@ -1,6 +1,6 @@
 @extends('frontend._template')
 @section('title')
-	CARE International Newsletter
+	Jl4 Newsletter
 @stop
 @section('page')
 
@@ -9,7 +9,7 @@
             <ul class="nav nav-pills pull-right">
                 <li><a class="login-box" href="{{URL::to('login-form')}}">Admin</a></li>
             </ul>
-            <h3 class="text-muted">CARE International Newsletter</h3>
+            <h3 class="text-muted">Jl4 Newsletter</h3>
         </div>
         <div class="row newsletter">
             <form class="form-horizontal password-reset-form" action="{{URL::to('password-reset-form')}}">
@@ -41,7 +41,7 @@
             </form>
         </div>
         <div class="footer">
-            <p>&copy; CARE International <?php echo date('Y') ?></p>
+            <p>&copy;Jl4 <?php echo date('Y') ?></p>
         </div>
     </div> <!-- /container --> 
 
