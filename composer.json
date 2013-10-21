@@ -13,9 +13,7 @@
 			"app/models",
 			"app/database/migrations",
 			"app/database/seeds",
-			"app/tests/TestCase.php",
-			"app/libraries/csvImporter.php", 
-			"app/libraries/Browser.php"
+			"app/tests/TestCase.php"
 		]
 	},
 	"scripts": {
