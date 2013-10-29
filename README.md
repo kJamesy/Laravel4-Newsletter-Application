@@ -7,6 +7,7 @@ Give it a shot! [DEMO](http://newsletterjl4.jf32.com/)
 What's New in version 1.1?
 --------------
 - New feature - Drafts (check the [demo](http://newsletterjl4.jf32.com/))
+- Improved CSV Importer function, with better feedback.
 - A cleaner and slightly more appealing design!
 - A few bug fixes
 
@@ -29,7 +30,7 @@ Things you should do
 - Copy the ```composer.json``` file from step 3 and overwrite that in step 1 with it. 
 - Run ```composer update```
 - Copy the entire ```app/``` and ```public/``` directories from step 3 and overwrite those in step 1 with these
-- Add ```,"app/libraries/csvImporter.php", "app/libraries/Browser.php"``` to ```autoload``` in ```composer.json``` file after ```"app/tests/TestCase.php"```
+- Add ```,"app/libraries" to ```autoload``` in ```composer.json``` file after ```"app/tests/TestCase.php"```
 - Run ```composer dump-autoload```
 - Set up your mysql database with the following credentials (You can change them if you want, just ensure you configure ```app/config/database.php``` to match):
 ```'database' => 'newsletterl4','username' => 'newsletterl4','password' => 'RncqKAJGLzw9z87n'```
@@ -51,8 +52,7 @@ Candidates for further work
 --------------
 
 - Tracking bounces since Swiftmailer only delivers to the SMTP server 
-- Importing CSV - not very consistent at the moment
-- Scalability/performance - the statistics page is currently cached every 30 minutes 
+- Scalability/performance - the statistics page is currently cached every 10 minutes 
 - Bugs/minor fixes as they arise
 
 

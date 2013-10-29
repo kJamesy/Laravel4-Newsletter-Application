@@ -148,8 +148,10 @@ class SubscriberController extends BaseController
 
 		    if ($input->move($destination, $filename))
 		    {
+		    	$csvpath = public_path().'/imports/'.$filename;
+				$processed = CsvManipulation::csvToArray($csvpath);
 
-				$thecsv = Readcsv::csv_open($filepath);
+				$thecsv = $processed['uniqueSubscribers'];
 
 				$rules = array(
 					'first_name' => 'required|alpha_num|max:128',
@@ -158,47 +160,54 @@ class SubscriberController extends BaseController
 				);	
 
 				$length = count($thecsv);
+				$failedValidation = 0;
 
 				for($i=0; $i<$length; $i++)
 				{
 					$validator = Validator::make($thecsv[$i], $rules);		
 					if ( $validator->fails() )
 					{
-						// var_dump($validator->messages());
 						unset($thecsv[$i]);
+						$failedValidation++;
 					}	
 
 				}
-
+			
 				$newcsvarray = array_values($thecsv);
 				$newlength = count($newcsvarray);
 
-				$timestamp = new Datetime;
+				$timestamp = date("Y-m-d H:i:s"); 
 
-				for($i=0; $i<$newlength; $i++)
-				{
-					$newcsvarray[$i]['active'] = 1;
-					$newcsvarray[$i]['created_at'] = $timestamp;
-					$newcsvarray[$i]['updated_at'] = $timestamp;
+				$defaults = ['active' => 1, 'created_at' => $timestamp, 'updated_at' => $timestamp];
+
+				$arrayforinsert = [];
+
+				foreach($newcsvarray as $key => $value) 
+				{	
+					$arrayforinsert[] = array_merge($value, $defaults);				
 				}
 
-
-				if (count($newcsvarray) > 0)
+				if (count($arrayforinsert) > 0)
 				{
-					Subscriber::insert($newcsvarray);
+					Subscriber::insert($arrayforinsert);
 					$list = Addressbook::find(1);
 					$subscribers = Subscriber::get();
 
 					foreach ($subscribers as $key => $subscriber) 
 					{
 						$list->subscribers()->attach($subscriber->id);
-						// $list->save();
 					}
 					
-					$subscribers = Subscriber::where('created_at', '=', $timestamp)->count();
+					$successful = Subscriber::where('created_at', '=', $timestamp)->count();
+
+					$successMsg = "Total no. of subscribers successfully imported: <b>" . $successful . "</b><br />" .
+								  "Total no. of rows in the CSV file: <b>" . $processed['allRows'] . "</b><br />" .
+								  "Total no. of rows with the required 3 fields: <b>" . $processed['rowsWithThreeFields'] . "</b><br />" .
+								  "Total no. of unique emails in the CSV file: <b>" . $processed['noOfUniqueEmails'] . "</b><br />" .
+								  "Total no. of failed validations: <b>" . $failedValidation . "</b>";
 
 					$success =  array('files' => array(array(
-						'success' => $subscribers . ' out of ' . $length . ' subscribers were succesfully imported and saved.',
+						'success' => $successMsg,
 						'name' => $filename, 
 						'size' => 'none', 
 						'url' => $filepath, 
@@ -231,6 +240,7 @@ class SubscriberController extends BaseController
 	    }	
 	}
 
+	
     public function export_csv($num)
     {
         $subscribers = Subscriber::get();
