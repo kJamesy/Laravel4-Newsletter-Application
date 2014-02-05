@@ -24,7 +24,7 @@ Things you can do with it
 
 Things you should do
 --------------
-- Download a fresh copy of [Laravel 4.0](https://github.com/laravel/laravel/archive/master.zip) into your dev environment
+- Download a fresh copy of [Laravel 4.0](https://github.com/laravel/laravel/archive/v4.0.8.zip) into your dev environment
 - Use ```composer install``` to install its dependencies (see [Laravel website](http://laravel.com/docs/installation) for full guide)
 - Download and extract the contents of Jl4 Newsletter Application into a separate directory
 - Copy the ```composer.json``` file from step 3 and overwrite that in step 1 with it. 
